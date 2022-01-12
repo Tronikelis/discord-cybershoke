@@ -19,7 +19,7 @@ const commands = [
                 .addChoice("Inferno", "de_inferno")
         ),
     new SlashCommandBuilder()
-        .setName("2x2")
+        .setName("duels2x2")
         .setDescription("Get a duels 2x2 server")
         .addStringOption(option =>
             option
@@ -38,7 +38,7 @@ const handleInteraction = async (interaction: Interaction) => {
         case "retakes":
             getRetakes(interaction);
             break;
-        case "2x2":
+        case "duels2x2":
             getCoopDuels(interaction);
     }
 };

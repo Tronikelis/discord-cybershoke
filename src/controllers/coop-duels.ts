@@ -11,14 +11,17 @@ export async function getCoopDuels(interaction: CommandInteraction) {
 
     const choseMap = interaction.options.get("map");
 
-    const duels = data.servers.DUELS2X2[
-        (String(choseMap?.value) || "ONLY MIRAGE") as keyof Duels
-    ]
+    const duels = data.servers.DUELS2X2[(choseMap?.value || "ONLY MIRAGE") as keyof Duels]
         .filter(({ players }) => players <= 14 && players >= 3)
         .map(({ ip, port }) => `${ip}:${port}`)
         .slice(0, 1)
         .map(val => `connect ${val}`)
         .reduce((prev, curr) => `${prev}\n${curr}`);
 
-    interaction.reply(`Duels 2v2 on ${choseMap?.value || "random"} map: \n${duels}`);
+    if (duels.length > 0) {
+        interaction.reply(`Duels 2v2 on ${choseMap?.value || "random"} map: \n${duels}`);
+        return;
+    }
+
+    interaction.reply("Servers are either full or empty");
 }

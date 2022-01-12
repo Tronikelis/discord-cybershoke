@@ -22,5 +22,10 @@ export async function getRetakes(interaction: CommandInteraction) {
         .map(val => `connect ${val}`)
         .reduce((prev, curr) => `${prev}\n${curr}`);
 
-    interaction.reply(`Retakes on ${choseMap?.value || "random"} map: \n${retakes}`);
+    if (retakes.length > 1) {
+        interaction.reply(`Retakes on ${choseMap?.value || "random"} map: \n${retakes}`);
+        return;
+    }
+
+    interaction.reply("Servers are either full or empty");
 }
