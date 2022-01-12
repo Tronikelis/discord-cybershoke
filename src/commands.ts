@@ -1,13 +1,9 @@
+import { SlashCommandBuilder } from "@discordjs/builders";
 import { Interaction } from "discord.js";
 
 import { getRetakes } from "./controllers";
 
-const commands = [
-    {
-        name: "retakes",
-        description: "Get cybershoke json api data",
-    },
-];
+const commands = [new SlashCommandBuilder().setName("retakes").setDescription("gets")];
 
 const handleInteraction = async (interaction: Interaction) => {
     if (!interaction.isCommand()) return;

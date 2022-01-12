@@ -23,13 +23,20 @@ client.login(process.env.TOKEN);
 // update commands
 (async () => {
     const rest = new REST({ version: "9" }).setToken(process.env.TOKEN || "");
+    const dev = process.env.NODE_ENV !== "production";
 
     try {
         console.log("Started refreshing application (/) commands.");
 
-        await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
-            body: commands,
-        });
+        if (dev) {
+            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
+                body: commands,
+            });
+        } else {
+            await rest.put(Routes.applicationCommands(CLIENT_ID), {
+                body: commands,
+            });
+        }
 
         console.log("Successfully reloaded application (/) commands.");
     } catch (error) {
