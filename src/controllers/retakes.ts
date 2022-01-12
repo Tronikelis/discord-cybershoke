@@ -23,7 +23,7 @@ export async function getRetakes(interaction: CommandInteraction) {
         .reduce((prev, curr) => `${prev}\n${curr}`, "");
 
     if (retakes) {
-        interaction.reply(`Retakes on ${choseMap?.value || "random"} map: \n${retakes}`);
+        interaction.reply(`Retakes on ${choseMap?.value || "random"} map: ${retakes}`);
         return;
     }
 
