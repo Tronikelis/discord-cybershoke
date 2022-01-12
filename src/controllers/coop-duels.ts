@@ -16,9 +16,9 @@ export async function getCoopDuels(interaction: CommandInteraction) {
         .map(({ ip, port }) => `${ip}:${port}`)
         .slice(0, 1)
         .map(val => `connect ${val}`)
-        .reduce((prev, curr) => `${prev}\n${curr}`);
+        .reduce((prev, curr) => `${prev}\n${curr}`, "");
 
-    if (duels.length > 0) {
+    if (duels) {
         interaction.reply(`Duels 2v2 on ${choseMap?.value || "random"} map: \n${duels}`);
         return;
     }

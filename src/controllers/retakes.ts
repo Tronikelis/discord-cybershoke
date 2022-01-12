@@ -20,9 +20,9 @@ export async function getRetakes(interaction: CommandInteraction) {
         .map(({ ip, port }) => `${ip}:${port}`)
         .slice(0, 1)
         .map(val => `connect ${val}`)
-        .reduce((prev, curr) => `${prev}\n${curr}`);
+        .reduce((prev, curr) => `${prev}\n${curr}`, "");
 
-    if (retakes.length > 1) {
+    if (retakes) {
         interaction.reply(`Retakes on ${choseMap?.value || "random"} map: \n${retakes}`);
         return;
     }
