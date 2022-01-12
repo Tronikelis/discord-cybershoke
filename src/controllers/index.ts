@@ -1,1 +1,2 @@
-export { default as getRetakes } from "./retakes";
+export { getRetakes } from "./retakes";
+export { getCoopDuels } from "./coop-duels";
