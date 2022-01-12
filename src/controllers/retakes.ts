@@ -22,5 +22,5 @@ export async function getRetakes(interaction: CommandInteraction) {
         .map(val => `connect ${val}`)
         .reduce((prev, curr) => `${prev}\n${curr}`);
 
-    interaction.reply(`Retakes on ${choseMap || "random"} map: \n${retakes}`);
+    interaction.reply(`Retakes on ${choseMap?.value || "random"} map: \n${retakes}`);
 }

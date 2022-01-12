@@ -20,5 +20,5 @@ export async function getCoopDuels(interaction: CommandInteraction) {
         .map(val => `connect ${val}`)
         .reduce((prev, curr) => `${prev}\n${curr}`);
 
-    interaction.reply(`Duels 2v2 on ${choseMap || "random"} map: \n${duels}`);
+    interaction.reply(`Duels 2v2 on ${choseMap?.value || "random"} map: \n${duels}`);
 }
