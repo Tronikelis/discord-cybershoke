@@ -12,6 +12,7 @@ export async function getRetakes(interaction: CommandInteraction) {
     const choseMap = interaction.options.get("map");
 
     const retakes = data.servers.RETAKECLASSIC["OPEN TO ALL - 9 SLOTS"]
+        .filter(({ country }) => ["ru", "de"].includes(country))
         .filter(({ players }) => players <= 6 && players >= 3)
         .filter(({ map }) => {
             if (!choseMap) return true;

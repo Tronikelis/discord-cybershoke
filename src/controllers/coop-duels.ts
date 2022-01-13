@@ -12,6 +12,7 @@ export async function getCoopDuels(interaction: CommandInteraction) {
     const choseMap = interaction.options.get("map");
 
     const duels = data.servers.DUELS2X2[(choseMap?.value || "ONLY MIRAGE") as keyof Duels]
+        .filter(({ country }) => ["ru", "de"].includes(country))
         .filter(({ players }) => players <= 14 && players >= 3)
         .map(({ ip, port }) => `${ip}:${port}`)
         .slice(0, 1)
